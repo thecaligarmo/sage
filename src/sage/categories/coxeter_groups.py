@@ -1974,7 +1974,19 @@ class CoxeterGroups(Category_singleton):
                 3
             """
             M = self.canonical_matrix()
-            return (M - 1).image().dimension()
+            dim_w = (M - 1).image().dimension()
+            if self.parent().is_finite():
+                return dim_w
+            # Assume affine?
+            from sage.combinat.root_system.extended_affine_weyl_group import ExtendedAffineWeylGroup
+            E = ExtendedAffineWeylGroup(self.parent().coxeter_type())
+            P = E.ExtendedAffineWeylGroupPW0()
+            # Finite Part:
+            wo = P.from_reduced_word(self.reduced_word()).to_classical_weyl()
+            dim_wo = wo.absolute_length()
+            return 2 * dim_w - dim_wo
+
+
 
         def absolute_le(self, other):
             r"""
