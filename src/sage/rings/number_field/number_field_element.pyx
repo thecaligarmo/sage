@@ -36,7 +36,7 @@ AUTHORS:
 
 import operator
 
-from cpython.int cimport *
+from cpython.long cimport *
 
 from cysignals.signals cimport sig_on, sig_off
 from sage.ext.stdsage cimport PY_NEW
@@ -121,44 +121,6 @@ def is_NumberFieldElement(x):
                 'is_NumberFieldElement is deprecated; '
                 'use isinstance(..., sage.structure.element.NumberFieldElement) instead')
     return isinstance(x, NumberFieldElement)
-
-
-def __create__NumberFieldElement_version0(parent, poly):
-    """
-    Used in unpickling elements of number fields pickled under very old Sage versions.
-
-    TESTS::
-
-        sage: x = polygen(ZZ, 'x')
-        sage: k.<a> = NumberField(x^3 - 2)
-        sage: R.<z> = QQ[]
-        sage: sage.rings.number_field.number_field_element.__create__NumberFieldElement_version0(k, z^2 + z + 1)
-        doctest:...: DeprecationWarning: __create__NumberFieldElement_version0() is deprecated
-        See https://github.com/sagemath/sage/issues/25848 for details.
-        a^2 + a + 1
-    """
-    from sage.misc.superseded import deprecation_cython as deprecation
-    deprecation(25848, '__create__NumberFieldElement_version0() is deprecated')
-    return NumberFieldElement(parent, poly)
-
-
-def __create__NumberFieldElement_version1(parent, cls, poly):
-    """
-    Used in unpickling elements of number fields pickled under old Sage versions.
-
-    TESTS::
-
-        sage: x = polygen(ZZ, 'x')
-        sage: k.<a> = NumberField(x^3 - 2)
-        sage: R.<z> = QQ[]
-        sage: sage.rings.number_field.number_field_element.__create__NumberFieldElement_version1(k, type(a), z^2 + z + 1)
-        doctest:...: DeprecationWarning: __create__NumberFieldElement_version1() is deprecated
-        See https://github.com/sagemath/sage/issues/25848 for details.
-        a^2 + a + 1
-    """
-    from sage.misc.superseded import deprecation_cython as deprecation
-    deprecation(25848, '__create__NumberFieldElement_version1() is deprecated')
-    return cls(parent, poly)
 
 
 def _inverse_mod_generic(elt, I):
@@ -2941,32 +2903,33 @@ cdef class NumberFieldElement(NumberFieldElement_base):
 
         EXAMPLES::
 
+            sage: # needs sage.symbolic
             sage: K.<a> = QuadraticField(2)
-            sage: SR(a) # indirect doctest                                              # needs sage.symbolic
+            sage: SR(a)         # indirect doctest
             sqrt(2)
-            sage: SR(3*a-5) # indirect doctest                                          # needs sage.symbolic
+            sage: SR(3*a - 5)   # indirect doctest
             3*sqrt(2) - 5
             sage: K.<a> = QuadraticField(2, embedding=-1.4)
-            sage: SR(a) # indirect doctest                                              # needs sage.symbolic
+            sage: SR(a)         # indirect doctest
             -sqrt(2)
             sage: x = polygen(ZZ, 'x')
             sage: K.<a> = NumberField(x^2 - 2)
-            sage: SR(a) # indirect doctest                                              # needs sage.symbolic
+            sage: SR(a)         # indirect doctest
             Traceback (most recent call last):
             ...
             TypeError: an embedding into RR or CC must be specified
 
         Now a more complicated example::
 
-            sage: K.<a> = NumberField(x^3 + x - 1, embedding=0.68)
-            sage: b = SR(a); b # indirect doctest                                       # needs sage.symbolic
+            sage: K.<a> = NumberField(x^3 + x - 1, embedding=0.68)                      # needs sage.symbolic
+            sage: b = SR(a); b  # indirect doctest                                      # needs sage.symbolic
             (1/18*sqrt(31)*sqrt(3) + 1/2)^(1/3) - 1/3/(1/18*sqrt(31)*sqrt(3) + 1/2)^(1/3)
             sage: (b^3 + b - 1).canonicalize_radical()                                  # needs sage.symbolic
             0
 
         Make sure we got the right one::
 
-            sage: CC(a)
+            sage: CC(a)                                                                 # needs sage.symbolic
             0.682327803828019
             sage: CC(b)                                                                 # needs sage.symbolic
             0.682327803828019
@@ -2974,7 +2937,7 @@ cdef class NumberFieldElement(NumberFieldElement_base):
         Special case for cyclotomic fields::
 
             sage: K.<zeta> = CyclotomicField(19)
-            sage: SR(zeta) # indirect doctest                                           # needs sage.symbolic
+            sage: SR(zeta)  # indirect doctest                                          # needs sage.symbolic
             e^(2/19*I*pi)
             sage: CC(zeta)
             0.945817241700635 + 0.324699469204683*I
@@ -2989,20 +2952,20 @@ cdef class NumberFieldElement(NumberFieldElement_base):
         embedded into the symbolic ring, which will usually get
         printed as a numerical approximation::
 
-            sage: K.<a> = NumberField(x^5-x+1, embedding=-1)
+            sage: K.<a> = NumberField(x^5-x+1, embedding=-1)                            # needs sage.symbolic
             sage: SR(a)                                                                 # needs sage.symbolic
             -1.167303978261419?
 
         ::
 
-            sage: K.<a> = NumberField(x^6-x^3-1, embedding=1)
+            sage: K.<a> = NumberField(x^6-x^3-1, embedding=1)                           # needs sage.symbolic
             sage: SR(a)                                                                 # needs sage.symbolic
             (1/2*sqrt(5) + 1/2)^(1/3)
 
         In this field, general elements cannot be written in terms of
         radicals, but particular elements might be::
 
-            sage: K.<a> = NumberField(x^10 + 6*x^6 + 9*x^2 + 1, embedding=CC(0.332*I))
+            sage: K.<a> = NumberField(x^10 + 6*x^6 + 9*x^2 + 1, embedding=CC(0.332*I))  # needs sage.symbolic
             sage: SR(a)                                                                 # needs sage.symbolic
             0.3319890295845093?*I
             sage: SR(a^5+3*a)                                                           # needs sage.symbolic
