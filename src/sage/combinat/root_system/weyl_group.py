@@ -56,7 +56,6 @@ from sage.structure.unique_representation import UniqueRepresentation
 from sage.structure.richcmp import richcmp, richcmp_not_equal
 from sage.categories.weyl_groups import WeylGroups
 from sage.categories.finite_weyl_groups import FiniteWeylGroups
-from sage.categories.affine_weyl_groups import AffineWeylGroups
 from sage.categories.permutation_groups import PermutationGroups
 from sage.sets.family import Family
 from sage.matrix.constructor import Matrix
@@ -213,6 +212,9 @@ def WeylGroup(x, prefix=None, implementation='matrix'):
         ct = CartanMatrix(x)  # See if it is a Cartan matrix
     if ct.is_finite():
         return WeylGroup_gens(ct.root_system().ambient_space(), prefix=prefix)
+    if ct.is_affine():
+        from sage.combinat.root_system.type_affine import AffineWeylGroup
+        return AffineWeylGroup(ct.root_system().root_space(), prefix=prefix)
     return WeylGroup_gens(ct.root_system().root_space(), prefix=prefix)
 
 
@@ -223,7 +225,7 @@ class WeylGroup_gens(UniqueRepresentation,
     def __classcall__(cls, domain, prefix=None):
         return super().__classcall__(cls, domain, prefix)
 
-    def __init__(self, domain, prefix):
+    def __init__(self, domain, prefix, category=None):
         """
         EXAMPLES::
 
@@ -238,12 +240,11 @@ class WeylGroup_gens(UniqueRepresentation,
             sage: W = WeylGroup(SymmetricGroup(1))
         """
         self._domain = domain
-        if self.cartan_type().is_affine():
-            category = AffineWeylGroups()
-        elif self.cartan_type().is_finite():
+        if self.cartan_type().is_finite():
             category = FiniteWeylGroups()
-        else:
+        elif category is None:
             category = WeylGroups()
+
         if self.cartan_type().is_irreducible():
             category = category.Irreducible()
         self.n = domain.dimension()  # Really needed?
@@ -395,6 +396,14 @@ class WeylGroup_gens(UniqueRepresentation,
             m = Matrix([ref(x).to_vector() for x in self.domain().basis()])
             return self(m.transpose())
         return Family(prr, to_elt, name="real root to reflection")
+
+    def reflection(self, i):
+        return self.reflections()[i]
+
+    def reflection_index_set(self):
+        if self.is_finite():
+            return self.reflections().keys()
+        raise NotImplementedError
 
     def _repr_(self):
         """
@@ -571,6 +580,42 @@ class WeylGroup_gens(UniqueRepresentation,
         if not self.cartan_type().is_affine():
             raise ValueError("classical subgroup only defined for affine types")
         return ClassicalWeylSubgroup(self._domain, prefix=self._prefix)
+
+    @cached_method
+    def parabolic_subgroups(self):
+        '''
+        Returns an index set of all parabolic subgroups (not just standard ones).
+        '''
+        if not self.is_finite():
+            raise NotImplementedError
+
+        I = self.parabolic_representatives()
+        # Positive and negative reflections (index off by one due to representatives)
+        R = {}
+        for c, i in enumerate(self.reflection_index_set()):
+            R[i] = c + 1
+            R[-i] = c + len(self.reflections()) + 1
+
+        WI = set([])
+        for J in I:
+            if J == self.one():
+                WI.add(tuple())
+                continue
+            J = J.reduced_word()
+            WJ = self.standard_parabolic_subgroup(J)
+            w0 = self.from_reduced_word(WJ.long_element().reduced_word())
+            # left coset reps
+            lcosets = [i for i in self if (i * w0).length() == i.length() + w0.length()]
+            for lc in lcosets:
+                # make a permutation dictionary based on reflections
+                perm = {}
+                for r in R.keys():
+                    lcr = lc.action(r)
+                    perm[R[r]] = lcr
+                tt = list(perm[j] for j in J)
+                tt.sort()
+                WI.add(tuple(tt))
+        return sorted(list(WI), key=lambda i: (len(i), list(map(R.get, i))))
 
 
 class ClassicalWeylSubgroup(WeylGroup_gens):

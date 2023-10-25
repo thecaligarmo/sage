@@ -440,6 +440,20 @@ class RootSystem(UniqueRepresentation, SageObject):
         return self.cartan_type().is_finite()
 
     @cached_method
+    def is_affine(self):
+        """
+        Return ``True`` if ``self`` is a finite root system.
+
+        EXAMPLES::
+
+            sage: RootSystem(["A",3]).is_affine()
+            False
+            sage: RootSystem(["A",3,1]).is_affine()
+            True
+        """
+        return self.cartan_type().is_affine()
+
+    @cached_method
     def is_irreducible(self):
         """
         Return ``True`` if ``self`` is an irreducible root system.
@@ -474,6 +488,9 @@ class RootSystem(UniqueRepresentation, SageObject):
             sage: RootSystem(['A',3]).root_space()
             Root space over the Rational Field of the Root system of type ['A', 3]
         """
+        if self.is_affine():
+            from sage.combinat.root_system.type_affine import AffineRootSpace
+            return AffineRootSpace(self, base_ring)
         return RootSpace(self, base_ring)
 
     def root_poset(self, restricted=False, facade=False):

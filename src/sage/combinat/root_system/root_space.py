@@ -50,7 +50,7 @@ class RootSpace(CombinatorialFreeModule):
 
     """
 
-    def __init__(self, root_system, base_ring):
+    def __init__(self, root_system, base_ring, basis_keys=None, sorting_key=None):
         """
         EXAMPLES::
 
@@ -62,10 +62,15 @@ class RootSpace(CombinatorialFreeModule):
         from sage.categories.homset import Hom
         from sage.categories.sets_with_partial_maps import SetsWithPartialMaps
         self.root_system = root_system
+
+        if basis_keys is None:
+            basis_keys = root_system.index_set()
+
         CombinatorialFreeModule.__init__(self, base_ring,
-                                         root_system.index_set(),
+                                         basis_keys,
                                          prefix="alphacheck" if root_system.dual_side else "alpha",
                                          latex_prefix="\\alpha^\\vee" if root_system.dual_side else "\\alpha",
+                                         sorting_key=sorting_key,
                                          category=RootLatticeRealizations(base_ring))
         if base_ring is not ZZ:
             # Register the partial conversion back from ``self`` to the root lattice
