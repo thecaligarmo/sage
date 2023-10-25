@@ -1240,7 +1240,55 @@ class CoxeterGroups(Category_singleton):
                 x = x.apply_simple_reflection_right(antiD[rnd])
             return x
 
-        # parabolic_subgroup
+        def parabolic_subgroup(self, index_set, standard=False):
+            if standard:
+                return self.standard_parabolic_subgroup(index_set)
+            raise NotImplementedError
+
+        def standard_parabolic_subgroup(self, index_set):
+            '''
+            Return a parabolic subgroup.
+
+            Index set is a set of simple reflections
+            '''
+            if not self.is_finite():
+                raise NotImplementedError
+            from sage.combinat.root_system.coxeter_group import CoxeterGroup
+            from sage.matrix.constructor import matrix
+
+            # Index set must be ordered according to self
+            index_set.sort(key=lambda i: self.index_set().index(i))
+            to_remove = []
+            for k, v in enumerate(self.index_set()):
+                if v not in index_set:
+                    to_remove.append(k)
+            CM = matrix(self.coxeter_matrix())
+            return CoxeterGroup(CM.delete_rows(to_remove).delete_columns(to_remove), index_set=index_set)
+
+        def parabolic_representatives(self):
+            '''
+            Return a list of representatives of orbits of (standard) parabolic
+            subgroups under conjugation.
+            '''
+            if not self.is_finite():
+                raise NotImplementedError
+            from sage.combinat.subset import SubsetsSorted
+            from sage.misc.misc_c import prod as mul
+            simples = self.simple_reflections().list()
+            subs = SubsetsSorted(simples)
+            poss = [mul(s) for s in subs]
+            poss.reverse()
+            para_reps = []
+            while len(poss) > 0:
+                w = poss.pop()
+                if w not in self:  # identity
+                    para_reps.append(self.one())
+                    continue
+                for i in w.conjugacy_class():
+                    if i in poss:
+                        poss.remove(i)
+                para_reps.append(w)
+            return para_reps
 
         def _test_simple_projections(self, **options):
             """
@@ -1977,16 +2025,7 @@ class CoxeterGroups(Category_singleton):
             dim_w = (M - 1).image().dimension()
             if self.parent().is_finite():
                 return dim_w
-            # Assume affine?
-            from sage.combinat.root_system.extended_affine_weyl_group import ExtendedAffineWeylGroup
-            E = ExtendedAffineWeylGroup(self.parent().coxeter_type())
-            P = E.ExtendedAffineWeylGroupPW0()
-            # Finite Part:
-            wo = P.from_reduced_word(self.reduced_word()).to_classical_weyl()
-            dim_wo = wo.absolute_length()
-            return 2 * dim_w - dim_wo
-
-
+            raise NotImplementedError
 
         def absolute_le(self, other):
             r"""
