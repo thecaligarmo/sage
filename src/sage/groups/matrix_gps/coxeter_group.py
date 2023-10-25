@@ -216,7 +216,7 @@ class CoxeterMatrixGroup(UniqueRepresentation, FinitelyGeneratedMatrixGroup_gene
         if base_ring is None:
             if data.is_simply_laced():
                 base_ring = ZZ
-            elif data.is_finite():
+            elif data.is_finite() or data.is_affine():
                 from sage.rings.number_field.number_field import QuadraticField
                 letter = data.coxeter_type().cartan_type().type()
                 if letter in ['B', 'C', 'F']:
