@@ -66,6 +66,10 @@ class RootSpace(CombinatorialFreeModule):
         if basis_keys is None:
             basis_keys = root_system.index_set()
 
+        if sorting_key is None:
+            def sorting_key(x):
+                return (1 if isinstance(x, str) else 0, x)
+
         CombinatorialFreeModule.__init__(self, base_ring,
                                          basis_keys,
                                          prefix="alphacheck" if root_system.dual_side else "alpha",
