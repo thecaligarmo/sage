@@ -657,7 +657,7 @@ class AffineWeylGroupElement(WeylGroupElement):
         .. SEEALSO::
 
             :meth:`~sage.categories.coxeter_groups.absolute_length`
-        
+
         EXAMPLES::
 
             sage: W = WeylGroup(['A',2,1])

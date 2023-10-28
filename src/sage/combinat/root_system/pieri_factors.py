@@ -87,7 +87,7 @@ class PieriFactors(UniqueRepresentation, Parent):
         EXAMPLES::
 
             sage: WeylGroup(["A", 2, 1]).pieri_factors() # indirect doctest
-            Pieri factors for Weyl Group of type ['A', 2, 1] (as a matrix group acting on the root space)
+            Pieri factors for Affine Weyl Group of type ['A', 2, 1] (as a matrix group acting on the root space)
         """
         return "Pieri factors for %s" % self.W
 
@@ -558,7 +558,7 @@ class PieriFactors_type_A_affine(PieriFactors_affine_type):
         EXAMPLES::
 
             sage: PF = WeylGroup(["A", 3, 1]).pieri_factors(); PF
-            Pieri factors for Weyl Group of type ['A', 3, 1] (as a matrix group acting on the root space)
+            Pieri factors for Affine Weyl Group of type ['A', 3, 1] (as a matrix group acting on the root space)
 
         TESTS::
 
@@ -609,7 +609,7 @@ class PieriFactors_type_A_affine(PieriFactors_affine_type):
         EXAMPLES::
 
             sage: PF = WeylGroup(["A", 3, 1]).pieri_factors(); PF
-            Pieri factors for Weyl Group of type ['A', 3, 1] (as a matrix group acting on the root space)
+            Pieri factors for Affine Weyl Group of type ['A', 3, 1] (as a matrix group acting on the root space)
             sage: PF3 = PF.subset(length = 2)
             sage: PF3.cardinality()
             6
@@ -789,11 +789,12 @@ class PieriFactors_type_A_affine(PieriFactors_affine_type):
             sage: PF = W.pieri_factors()
             sage: f = PF.__iter__()
             sage: next(f)
-            [1 0 0 0 0]
-            [0 1 0 0 0]
-            [0 0 1 0 0]
-            [0 0 0 1 0]
-            [0 0 0 0 1]
+            [1 0 0 0 0 0]
+            [0 1 0 0 0 0]
+            [0 0 1 0 0 0]
+            [0 0 0 1 0 0]
+            [0 0 0 0 1 0]
+            [0 0 0 0 0 1]
             sage: [next(f).reduced_word() for i in range(6)]
             [[0], [1], [2], [3], [4], [1, 0]]
         """
@@ -859,7 +860,7 @@ class PieriFactors_type_C_affine(PieriFactors_affine_type):
             sage: [w.reduced_word() for w in PF.maximal_elements_combinatorial()]
             [[0, 1, 2, 3, 2, 1], [1, 0, 1, 2, 3, 2], [2, 1, 0, 1, 2, 3], [3, 2, 1, 0, 1, 2], [2, 3, 2, 1, 0, 1], [1, 2, 3, 2, 1, 0]]
         """
-        n = self.W.n
+        n = self.W.n - 1
         rho = self.W.from_reduced_word(range(1, n-1))*self.W.from_reduced_word(range(n-1,-1,-1))
         rotations = []
         for i in range(2 * (n - 1)):
@@ -947,7 +948,7 @@ class PieriFactors_type_B_affine(PieriFactors_affine_type):
             sage: [u.reduced_word() for u in W.pieri_factors().maximal_elements_combinatorial()]
             [[1, 0, 2, 3, 4, 3, 2], [2, 1, 0, 2, 3, 4, 3], [3, 2, 1, 0, 2, 3, 4], [4, 3, 2, 1, 0, 2, 3], [3, 4, 3, 2, 1, 0, 2], [2, 3, 4, 3, 2, 1, 0], [1, 2, 3, 4, 3, 2, 1], [0, 2, 3, 4, 3, 2, 0]]
         """
-        n = self.W.n
+        n = self.W.n - 1
         rho = self.W.from_reduced_word(range(2,n-1))*self.W.from_reduced_word(range(n-1,-1,-1))
         rotations = []
         for i in range(2 * (n - 2)):
@@ -1061,7 +1062,7 @@ class PieriFactors_type_D_affine(PieriFactors_affine_type):
             sage: set(PF.maximal_elements_combinatorial()) == set(PF.maximal_elements())
             True
         """
-        n = self.W.n
+        n = self.W.n - 1
         rho = self.W.from_reduced_word(range(2,n))*self.W.from_reduced_word(range(n-3,-1,-1))
         rotations = []
         for i in range(2 * (n - 3)):
