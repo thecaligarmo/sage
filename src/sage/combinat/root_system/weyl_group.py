@@ -329,13 +329,16 @@ class WeylGroup_gens(UniqueRepresentation,
 
             sage: W=WeylGroup(['A',2,1])
             sage: W.simple_reflections()
-            Finite family {0: [-1  1  1]
-            [ 0  1  0]
-            [ 0  0  1], 1: [ 1  0  0]
-            [ 1 -1  1]
-            [ 0  0  1], 2: [ 1  0  0]
-            [ 0  1  0]
-            [ 1  1 -1]}
+            Finite family {0: [-1  1  1 -1]
+            [ 0  1  0  0]
+            [ 0  0  1  0]
+            [ 0  0  0  1], 1: [ 1  0  0  0]
+            [ 1 -1  1  0]
+            [ 0  0  1  0]
+            [ 0  0  0  1], 2: [ 1  0  0  0]
+            [ 0  1  0  0]
+            [ 1  1 -1  0]
+            [ 0  0  0  1]}
             sage: W = WeylGroup(['F',4])
             sage: [s1,s2,s3,s4] = W.simple_reflections()
             sage: w = s1*s2*s3*s4; w
@@ -412,7 +415,7 @@ class WeylGroup_gens(UniqueRepresentation,
             sage: WeylGroup(['A', 1])
             Weyl Group of type ['A', 1] (as a matrix group acting on the ambient space)
             sage: WeylGroup(['A', 3, 1])
-            Weyl Group of type ['A', 3, 1] (as a matrix group acting on the root space)
+            Affine Weyl Group of type ['A', 3, 1] (as a matrix group acting on the root space)
         """
         domain = self._domain._name_string(capitalize=False,
                                            base_ring=False,
@@ -497,9 +500,10 @@ class WeylGroup_gens(UniqueRepresentation,
             [0 0 0 1]
             sage: W=WeylGroup(['A',2,1])
             sage: W.simple_reflection(1)
-            [ 1  0  0]
-            [ 1 -1  1]
-            [ 0  0  1]
+            [ 1  0  0  0]
+            [ 1 -1  1  0]
+            [ 0  0  1  0]
+            [ 0  0  0  1]
         """
         if i not in self.index_set():
             raise ValueError("i must be in the index set")
@@ -671,12 +675,7 @@ class ClassicalWeylSubgroup(WeylGroup_gens):
         EXAMPLES::
 
             sage: WeylGroup(['A',2,1]).classical().simple_reflections()
-            Finite family {1: [ 1  0  0]
-                              [ 1 -1  1]
-                              [ 0  0  1],
-                           2: [ 1  0  0]
-                              [ 0  1  0]
-                              [ 1  1 -1]}
+            Finite family {1: [ 1  0  0  0] [ 1 -1  1  0] [ 0  0  1  0] [ 0  0  0  1],  2: [ 1  0  0  0] [ 0  1  0  0] [ 1  1 -1  0] [ 0  0  0  1]}
 
         Note: won't be needed, once the lattice will be a parabolic sub root system
         """
@@ -788,9 +787,10 @@ class WeylGroupElement(MatrixGroupElement_gap):
             sage: W = WeylGroup(['A',2,1])
             sage: [s0,s1,s2]=W.simple_reflections()
             sage: s0*s1
-            [ 0 -1  2]
-            [ 1 -1  1]
-            [ 0  0  1]
+            [ 0 -1  2 -1]
+            [ 1 -1  1  0]
+            [ 0  0  1  0]
+            [ 0  0  0  1]
         """
         if self._parent._prefix is None:
             return MatrixGroupElement_gap._repr_(self)
@@ -816,10 +816,11 @@ class WeylGroupElement(MatrixGroupElement_gap):
             sage: W = WeylGroup(['A',2,1])
             sage: [s0,s1,s2] = W.simple_reflections()
             sage: latex(s0*s1)
-            \left(\begin{array}{rrr}
-            0 & -1 & 2 \\
-            1 & -1 & 1 \\
-            0 & 0 & 1
+            \left(\begin{array}{rrrr}
+            0 & -1 & 2 & -1 \\
+            1 & -1 & 1 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1
             \end{array}\right)
         """
         if self._parent._prefix is None:

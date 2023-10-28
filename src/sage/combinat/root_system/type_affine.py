@@ -632,7 +632,7 @@ class AffineWeylGroup(WeylGroup_gens):
         domain = self._domain._name_string(capitalize=False,
                                            base_ring=False,
                                            type=False)
-        return "Affine Subgroup of the Weyl Group of type %s (as a matrix group acting on the %s)" % (self.domain().cartan_type(), domain)
+        return "Affine Weyl Group of type %s (as a matrix group acting on the %s)" % (self.domain().cartan_type(), domain)
 
 
 class AffineWeylGroupElement(WeylGroupElement):
