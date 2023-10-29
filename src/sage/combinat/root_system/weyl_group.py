@@ -204,6 +204,9 @@ def WeylGroup(x, prefix=None, implementation='matrix'):
         raise ValueError("invalid implementation")
 
     if x in RootLatticeRealizations:
+        #if x.cartan_type().is_affine():
+        #    from sage.combinat.root_system.type_affine import AffineWeylGroup
+        #    return AffineWeylGroup(x, prefix=prefix)
         return WeylGroup_gens(x, prefix=prefix)
 
     try:

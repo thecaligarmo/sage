@@ -547,6 +547,15 @@ class AffineRootSpace(RootSpace):
                                          basis_keys=basis_keys,
                                          sorting_key=sortkey)
 
+    def _plot_projection(self, x):
+        r"""
+        @todo Needs doctest and double check this is correct
+        """
+        from sage.modules.free_module_element import vector
+        y = list(vector(x))
+        y.pop()
+        return vector(y)
+
 
 class AffineWeylGroup(WeylGroup_gens):
     """
