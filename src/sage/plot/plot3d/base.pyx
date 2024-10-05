@@ -80,7 +80,9 @@ cdef class Graphics3d(SageObject):
     This is the baseclass for all 3d graphics objects.
 
     .. automethod:: __add__
+        :no-index:
     .. automethod:: _rich_repr_
+        :no-index:
     """
     def __cinit__(self):
         """

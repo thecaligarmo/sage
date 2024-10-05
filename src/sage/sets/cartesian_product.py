@@ -50,6 +50,7 @@ class CartesianProduct(UniqueRepresentation, Parent):
             and Category of Cartesian products of finite enumerated sets
 
     .. automethod:: CartesianProduct._cartesian_product_of_elements
+        :no-index:
     """
     def __init__(self, sets, category, flatten=False):
         r"""

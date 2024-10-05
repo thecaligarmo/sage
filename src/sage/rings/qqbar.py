@@ -4918,6 +4918,7 @@ class AlgebraicNumber(AlgebraicNumber_base):
     is inherited from :class:`AlgebraicNumber_base`.
 
     .. automethod:: _richcmp_
+        :no-index:
     """
     def __init__(self, x):
         r"""
@@ -5484,6 +5485,7 @@ class AlgebraicReal(AlgebraicNumber_base):
     A real algebraic number.
 
     .. automethod:: _richcmp_
+        :no-index:
     """
     def __init__(self, x):
         """

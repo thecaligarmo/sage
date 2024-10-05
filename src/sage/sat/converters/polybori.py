@@ -53,7 +53,9 @@ class CNFEncoder(ANF2CNFConverter):
     behaviour is disabled by passing ``use_xor_clauses=False``.
 
     .. automethod:: __init__
+        :no-index:
     .. automethod:: __call__
+        :no-index:
     """
     def __init__(self, solver, ring, max_vars_sparse=6, use_xor_clauses=None, cutting_number=6, random_seed=16):
         """

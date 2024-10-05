@@ -245,6 +245,7 @@ class table(SageObject):
         ....:                 header_row=True, frame=True)).run()
 
     .. automethod:: _rich_repr_
+        :no-index:
     """
     def __init__(self, rows=None, columns=None, header_row=False,
                  header_column=False, frame=False, align='left'):

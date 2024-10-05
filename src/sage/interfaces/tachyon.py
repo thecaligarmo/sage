@@ -741,6 +741,7 @@ class TachyonRT(SageObject):
     EXAMPLES:
 
     .. automethod:: __call__
+        :no-index:
     """
     def _repr_(self):
         """

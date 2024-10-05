@@ -325,6 +325,7 @@ class ChartFunction(AlgebraElement, ModuleElementWithMutability):
         u(x, y)*v(x, y)
 
     .. automethod:: __call__
+        :no-index:
     """
 
     def __init__(self, parent, expression=None, calc_method=None,

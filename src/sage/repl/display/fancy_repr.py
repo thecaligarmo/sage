@@ -29,6 +29,7 @@ class ObjectReprABC():
     The abstract base class of an object representer.
 
     .. automethod:: __call__
+        :no-index:
     """
 
     def __repr__(self):
@@ -111,6 +112,7 @@ class SomeIPythonRepr(ObjectReprABC):
             SomeIPythonRepr pretty printer
 
         .. automethod:: __call__
+            :no-index:
         """
         type_repr = _type_pprinters.copy()
         del type_repr[type]
@@ -156,6 +158,7 @@ class LargeMatrixHelpRepr(ObjectReprABC):
     Representation including help for large Sage matrices.
 
     .. automethod:: __call__
+        :no-index:
     """
 
     def __call__(self, obj, p, cycle):
@@ -214,6 +217,7 @@ class PlainPythonRepr(ObjectReprABC):
     The ordinary Python representation.
 
     .. automethod:: __call__
+        :no-index:
     """
 
     def __call__(self, obj, p, cycle):
@@ -286,6 +290,7 @@ class TallListRepr(ObjectReprABC):
     Special representation for lists with tall entries (e.g. matrices).
 
     .. automethod:: __call__
+        :no-index:
     """
 
     def __call__(self, obj, p, cycle):

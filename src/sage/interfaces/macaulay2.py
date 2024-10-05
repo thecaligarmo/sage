@@ -881,6 +881,7 @@ class Macaulay2Element(ExtraTabCompletion, ExpectElement, sage.interfaces.abc.Ma
     SageMath objects:
 
     .. automethod:: _sage_
+        :no-index:
     """
     def _latex_(self):
         r"""

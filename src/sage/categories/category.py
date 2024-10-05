@@ -406,21 +406,37 @@ class Category(UniqueRepresentation, SageObject):
         True
 
     .. automethod:: Category._super_categories
+        :no-index:
     .. automethod:: Category._super_categories_for_classes
+        :no-index:
     .. automethod:: Category._all_super_categories
+        :no-index:
     .. automethod:: Category._all_super_categories_proper
+        :no-index:
     .. automethod:: Category._set_of_super_categories
+        :no-index:
     .. automethod:: Category._make_named_class
+        :no-index:
     .. automethod:: Category._repr_
+        :no-index:
     .. automethod:: Category._repr_object_names
+        :no-index:
     .. automethod:: Category._test_category
+        :no-index:
     .. automethod:: Category._with_axiom
+        :no-index:
     .. automethod:: Category._with_axiom_as_tuple
+        :no-index:
     .. automethod:: Category._without_axioms
+        :no-index:
     .. automethod:: Category._sort
+        :no-index:
     .. automethod:: Category._sort_uniq
+        :no-index:
     .. automethod:: Category.__classcall__
+        :no-index:
     .. automethod:: Category.__init__
+        :no-index:
     """
     @staticmethod
     def __classcall__(cls, *args, **options):
@@ -2698,6 +2714,7 @@ class CategoryWithParameters(Category):
         False
 
     .. automethod:: Category._make_named_class
+        :no-index:
     """
 
     def _make_named_class(self, name, method_provider, cache=False, **options):
@@ -2930,8 +2947,11 @@ class JoinCategory(CategoryWithParameters):
         True
 
     .. automethod:: Category._repr_object_names
+        :no-index:
     .. automethod:: Category._repr_
+        :no-index:
     .. automethod:: Category._without_axioms
+        :no-index:
     """
 
     def __init__(self, super_categories, **kwds):

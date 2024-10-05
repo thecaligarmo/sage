@@ -270,17 +270,29 @@ cdef class Parent(sage.structure.category_object.CategoryObject):
             Join of Category of monoids and Category of commutative additive monoids and Category of facade sets
 
         .. automethod:: __call__
+            :no-index:
         .. automethod:: _populate_coercion_lists_
+            :no-index:
         .. automethod:: __mul__
+            :no-index:
         .. automethod:: __contains__
+            :no-index:
         .. automethod:: _coerce_map_from_
+            :no-index:
         .. automethod:: _convert_map_from_
+            :no-index:
         .. automethod:: _get_action_
+            :no-index:
         .. automethod:: _an_element_
+            :no-index:
         .. automethod:: _repr_option
+            :no-index:
         .. automethod:: _init_category_
+            :no-index:
         .. automethod:: _is_coercion_cached
+            :no-index:
         .. automethod:: _is_conversion_cached
+            :no-index:
         """
         if isinstance(category, (tuple, list)):
             category = Category.join(category)

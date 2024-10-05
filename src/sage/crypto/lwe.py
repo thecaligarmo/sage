@@ -126,7 +126,9 @@ class UniformSampler(SageObject):
         True
 
     .. automethod:: __init__
+        :no-index:
     .. automethod:: __call__
+        :no-index:
     """
     def __init__(self, lower_bound, upper_bound):
         """
@@ -184,7 +186,9 @@ class UniformPolynomialSampler(SageObject):
         Univariate Polynomial Ring in x over Integer Ring
 
     .. automethod:: __init__
+        :no-index:
     .. automethod:: __call__
+        :no-index:
     """
     def __init__(self, P, n, lower_bound, upper_bound):
         """
@@ -244,7 +248,9 @@ class LWE(SageObject):
     Learning with Errors (LWE) oracle.
 
     .. automethod:: __init__
+        :no-index:
     .. automethod:: __call__
+        :no-index:
     """
     def __init__(self, n, q, D, secret_dist='uniform', m=None):
         r"""
@@ -373,6 +379,7 @@ class Regev(LWE):
     LWE oracle with parameters as in [Reg09]_.
 
     .. automethod:: __init__
+        :no-index:
     """
     def __init__(self, n, secret_dist='uniform', m=None):
         """
@@ -405,6 +412,7 @@ class LindnerPeikert(LWE):
     LWE oracle with parameters as in [LP2011]_.
 
     .. automethod:: __init__
+        :no-index:
     """
     def __init__(self, n, delta=0.01, m=None):
         """
@@ -454,6 +462,7 @@ class UniformNoiseLWE(LWE):
     LWE oracle with uniform secret with parameters as in [CGW2013]_.
 
     .. automethod:: __init__
+        :no-index:
     """
     def __init__(self, n, instance='key', m=None):
         """
@@ -519,7 +528,9 @@ class RingLWE(SageObject):
     Ring Learning with Errors oracle.
 
     .. automethod:: __init__
+        :no-index:
     .. automethod:: __call__
+        :no-index:
     """
     def __init__(self, N, q, D, poly=None, secret_dist='uniform', m=None):
         """
@@ -615,6 +626,7 @@ class RingLindnerPeikert(RingLWE):
     Ring-LWE oracle with parameters as in [LP2011]_.
 
     .. automethod:: __init__
+        :no-index:
     """
     def __init__(self, N, delta=0.01, m=None):
         """
@@ -660,7 +672,9 @@ class RingLWEConverter(SageObject):
     disregarding the additional structure.
 
     .. automethod:: __init__
+        :no-index:
     .. automethod:: __call__
+        :no-index:
     """
     def __init__(self, ringlwe):
         """

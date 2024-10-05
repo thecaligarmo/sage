@@ -263,7 +263,9 @@ class AttributeAccessTracerProxy():
             4
 
         .. automethod:: __getattribute__
+            :no-index:
         .. automethod:: __setattr__
+            :no-index:
         """
         helper = AttributeAccessTracerHelper(delegate, **kwds)
         object.__setattr__(self, "helper", helper)

@@ -179,6 +179,7 @@ class Graphics(WithEqualityById, SageObject):
         42
 
     .. automethod:: _rich_repr_
+        :no-index:
     """
 
     def __init__(self):

@@ -21,6 +21,7 @@ class TallListFormatter():
     Special representation for lists with tall entries (e.g. matrices).
 
     .. automethod:: __call__
+        :no-index:
     """
 
     # This is used to wrap lines when printing "tall" lists.

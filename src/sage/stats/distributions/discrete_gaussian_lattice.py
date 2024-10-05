@@ -150,7 +150,9 @@ class DiscreteGaussianDistributionLatticeSampler(SageObject):
     - [GPV2008]_
 
     .. automethod:: __init__
+        :no-index:
     .. automethod:: __call__
+        :no-index:
     """
     @staticmethod
     def compute_precision(precision, sigma):

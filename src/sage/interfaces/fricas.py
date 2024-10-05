@@ -995,6 +995,7 @@ class FriCASElement(ExpectElement, sage.interfaces.abc.FriCASElement):
     SageMath objects:
 
     .. automethod:: _sage_
+        :no-index:
     """
     def __len__(self):
         """

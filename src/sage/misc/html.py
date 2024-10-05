@@ -43,6 +43,7 @@ class HtmlFragment(str, SageObject):
         <b>test</b>
 
     .. automethod:: _rich_repr_
+        :no-index:
     """
 
     def _rich_repr_(self, display_manager, **kwds):

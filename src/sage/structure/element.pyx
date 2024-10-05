@@ -376,13 +376,21 @@ cdef class Element(SageObject):
     set ``_parent`` themselves if that would be more efficient.
 
     .. automethod:: _richcmp_
+        :no-index:
     .. automethod:: __add__
+        :no-index:
     .. automethod:: __sub__
+        :no-index:
     .. automethod:: __neg__
+        :no-index:
     .. automethod:: __mul__
+        :no-index:
     .. automethod:: __truediv__
+        :no-index:
     .. automethod:: __floordiv__
+        :no-index:
     .. automethod:: __mod__
+        :no-index:
     """
     @cython.binding(False)
     @cython.always_allow_keywords(False)

@@ -649,6 +649,7 @@ class OEISSequence(SageObject, UniqueRepresentation):
             -3
 
     .. automethod:: __call__
+        :no-index:
     """
     @staticmethod
     def __classcall__(cls, ident):

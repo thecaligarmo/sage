@@ -41,7 +41,9 @@ cdef class SageObject:
     inherit from :class:`SageObject`.
 
     .. automethod:: _ascii_art_
+        :no-index:
     .. automethod:: _cache_key
+        :no-index:
     """
     def _test_new(self, **options):
         """

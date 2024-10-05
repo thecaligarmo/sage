@@ -48,7 +48,9 @@ class DIMACS(SatSolver):
         class which inherits from this class.
 
     .. automethod:: __init__
+        :no-index:
     .. automethod:: __call__
+        :no-index:
     """
 
     command = ""

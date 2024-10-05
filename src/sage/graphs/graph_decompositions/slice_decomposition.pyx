@@ -386,6 +386,7 @@ cdef class SliceDecomposition(SageObject):
             ValueError: parameter G must be an undirected graph
 
         .. automethod:: __getitem__
+            :no-index:
         """
         if G.is_directed():
             raise ValueError("parameter G must be an undirected graph")

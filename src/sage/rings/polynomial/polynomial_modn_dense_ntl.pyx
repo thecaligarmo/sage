@@ -672,11 +672,17 @@ cdef class Polynomial_dense_modn_ntl_zz(Polynomial_dense_mod_n):
     Polynomial on `\ZZ/n\ZZ` implemented via NTL.
 
     .. automethod:: _add_
+        :no-index:
     .. automethod:: _sub_
+        :no-index:
     .. automethod:: _lmul_
+        :no-index:
     .. automethod:: _rmul_
+        :no-index:
     .. automethod:: _mul_
+        :no-index:
     .. automethod:: _mul_trunc_
+        :no-index:
     """
     def __init__(self, parent, v=None, check=True, is_gen=False, construct=False):
         r"""

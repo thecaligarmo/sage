@@ -170,7 +170,9 @@ class PRESENT(SageObject):
         :mod:`sage.crypto.sboxes`
 
     .. automethod:: __init__
+        :no-index:
     .. automethod:: __call__
+        :no-index:
     """
 
     def __init__(self, keySchedule=80, rounds=None, doFinalRound=False):
@@ -707,7 +709,9 @@ class PRESENT_KS(SageObject):
         mind if you change the Sbox or :func:`__call__`.
 
     .. automethod:: __init__
+        :no-index:
     .. automethod:: __call__
+        :no-index:
     """
 
     def __init__(self, keysize=80, rounds=31, master_key=None):

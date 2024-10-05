@@ -80,11 +80,17 @@ cdef class Polynomial_zmod_flint(Polynomial_template):
         True
 
     .. automethod:: _add_
+        :no-index:
     .. automethod:: _sub_
+        :no-index:
     .. automethod:: _lmul_
+        :no-index:
     .. automethod:: _rmul_
+        :no-index:
     .. automethod:: _mul_
+        :no-index:
     .. automethod:: _mul_trunc_
+        :no-index:
     """
     def __init__(self, parent, x=None, check=True, is_gen=False, construct=False):
         """

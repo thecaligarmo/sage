@@ -1870,12 +1870,19 @@ class CategoryWithAxiom(Category):
     infrastructure.
 
     .. automethod:: CategoryWithAxiom.__classcall__
+        :no-index:
     .. automethod:: CategoryWithAxiom.__classget__
+        :no-index:
     .. automethod:: CategoryWithAxiom.__init__
+        :no-index:
     .. automethod:: CategoryWithAxiom._repr_object_names
+        :no-index:
     .. automethod:: CategoryWithAxiom._repr_object_names_static
+        :no-index:
     .. automethod:: CategoryWithAxiom._test_category_with_axiom
+        :no-index:
     .. automethod:: CategoryWithAxiom._without_axioms
+        :no-index:
     """
 
     @lazy_class_attribute

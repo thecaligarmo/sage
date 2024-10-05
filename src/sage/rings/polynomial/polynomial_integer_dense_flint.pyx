@@ -89,11 +89,17 @@ cdef class Polynomial_integer_dense_flint(Polynomial):
         True
 
     .. automethod:: _add_
+        :no-index:
     .. automethod:: _sub_
+        :no-index:
     .. automethod:: _lmul_
+        :no-index:
     .. automethod:: _rmul_
+        :no-index:
     .. automethod:: _mul_
+        :no-index:
     .. automethod:: _mul_trunc_
+        :no-index:
     """
 
     def __cinit__(self):

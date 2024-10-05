@@ -2937,6 +2937,7 @@ class FiniteStateMachine(SageObject):
         ([0, 1], [2, 3])
 
     .. automethod:: __call__
+        :no-index:
     """
 
     on_duplicate_transition = duplicate_transition_ignore

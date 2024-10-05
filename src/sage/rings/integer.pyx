@@ -444,6 +444,7 @@ cdef class Integer(sage.structure.element.EuclideanDomainElement):
         3
 
     .. automethod:: __pow__
+        :no-index:
     """
 
     def __cinit__(self):

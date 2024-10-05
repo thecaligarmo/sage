@@ -337,7 +337,9 @@ class DES(SageObject):
         ....:              (K.hex(), P.hex(), C.hex()))
 
     .. automethod:: __init__
+        :no-index:
     .. automethod:: __call__
+        :no-index:
     """
 
     def __init__(self, rounds=None, keySchedule='DES_KS', keySize=64, doFinalRound=True):
@@ -785,7 +787,9 @@ class DES_KS(SageObject):
         :class:`DES`
 
     .. automethod:: __init__
+        :no-index:
     .. automethod:: __call__
+        :no-index:
     """
 
     def __init__(self, rounds=16, masterKey=None):
