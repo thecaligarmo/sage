@@ -1077,9 +1077,9 @@ cdef class BinaryCode:
 
         INPUT:
 
-        - ``col_gamma`` -- permutation sending i |--> col_gamma[i] acting
+        - ``col_gamma`` -- permutation sending i -> col_gamma[i] acting
           on the columns
-        - ``word_gamma`` -- permutation sending i |--> word_gamma[i] acting
+        - ``word_gamma`` -- permutation sending i -> word_gamma[i] acting
           on the words
 
         EXAMPLES::
@@ -1832,7 +1832,7 @@ cdef class PartitionStack:
         return s
 
     def _repr_at_k(self, k):
-        """
+        r"""
         Give a string representing the partition at level k.
 
         EXAMPLES::
@@ -3150,6 +3150,7 @@ cdef class BinaryCodeClassifier:
         OUTPUT:
 
         a tuple, (gens, labeling, size, base)
+
         - gens; list of permutations (in list form) representing generators
           of the permutation automorphism group of the code CC
         - labeling; a permutation representing the canonical labeling of the

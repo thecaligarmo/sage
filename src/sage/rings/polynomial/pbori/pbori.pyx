@@ -881,7 +881,7 @@ cdef class BooleanPolynomialRing(BooleanPolynomialRing_base):
                             (type(other), str(self)))
 
     def _element_constructor_(self, other):
-        """
+        r"""
         Convert ``other`` to this Boolean polynomial ring.
 
         EXAMPLES::
@@ -925,8 +925,8 @@ cdef class BooleanPolynomialRing(BooleanPolynomialRing_base):
             ...
             TypeError: cannot convert polynomial z*x^2 + 5*y^3 to Boolean PolynomialRing in x, y: name z not defined
 
-        We test that univariate polynomials convert into the
-        boolean polynomial ring (:issue:`9138`)::
+        We test that univariate polynomials convert into the boolean polynomial
+        ring (:issue:`9138`)::
 
             sage: R.<x> = ZZ[]
             sage: p = x^3+2*x^2+x+1
@@ -2095,12 +2095,12 @@ class BooleanMonomialMonoid(UniqueRepresentation, Monoid_class):
             ...
             TypeError: cannot convert to BooleanMonomialMonoid
 
-        Convert elements of self::
+        Convert elements of ``self``::
 
             sage: M(x_monom)
             x
 
-        Convert from other :class:`BooleanPolynomialRing`s::
+        Convert from other :class:`BooleanPolynomialRing`s ::
 
             sage: R.<z,x> = BooleanPolynomialRing(2)
             sage: t = M(z); t
@@ -2109,7 +2109,7 @@ class BooleanMonomialMonoid(UniqueRepresentation, Monoid_class):
             True
 
         Convert :class:`BooleanMonomial`s over other
-        :class:`BooleanPolynomialRing`s::
+        :class:`BooleanPolynomialRing`s ::
 
             sage: N = BooleanMonomialMonoid(R)
             sage: t = M(N(x*z)); t
@@ -2117,14 +2117,14 @@ class BooleanMonomialMonoid(UniqueRepresentation, Monoid_class):
             sage: t.parent() is M
             True
 
-        Convert :class:`BooleSet`s::
+        Convert :class:`BooleSet`s ::
 
             sage: t = M.an_element(); t
             x
             sage: M(t.set()) == t
             True
 
-        Convert a tuple of integers::
+        Convert a tuple of integers ::
 
             sage: M((0,2,0))
             x*z

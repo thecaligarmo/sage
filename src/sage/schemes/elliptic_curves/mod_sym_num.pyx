@@ -3611,8 +3611,8 @@ def _test_init(E):
 
 def _test_integration(E, a, b, T):
     r"""
-    Doctest for the numerical integration in
-    _integration_to_tau_double in the above class.
+    Doctest for the numerical integration in `_integration_to_tau_double` in
+    the above class.
 
     INPUT:
 
@@ -3621,7 +3621,7 @@ def _test_integration(E, a, b, T):
     - ``a``, ``b`` -- two real numbers representing real and
       imaginary part of a complex number tau
 
-    - ``T `` -- integer for the number of terms to use
+    - ``T`` -- integer for the number of terms to use
 
     OUTPUT: a complex number
 
@@ -3652,8 +3652,8 @@ def _test_integration(E, a, b, T):
 
 def _test_integration_via_partials(E, y, m, T):
     r"""
-    Doctest for the numerical integration in
-    _partial_real_sums_double in the above class.
+    Doctest for the numerical integration in `_partial_real_sums_double` in
+    the above class.
 
     INPUT:
 
@@ -3663,7 +3663,7 @@ def _test_integration_via_partials(E, y, m, T):
 
     - ``m`` -- integer
 
-    - ``T `` -- integer for the number of terms to use
+    - ``T`` -- integer for the number of terms to use
 
     OUTPUT: list of `m` real numbers
 
@@ -3680,7 +3680,7 @@ def _test_integration_via_partials(E, y, m, T):
         [0.49198993741342784, 0.6601504274130793, 0.3177042713926389]
         sage: _test_integration_via_partials(E,0.03,3,7000)  # abs tol 1e-11
         [0.49198993741342784, 0.6601504274130793, 0.3177042713926389]
-        """
+    """
     cdef int mm = <int>(m)
     cdef double * ra
     ra = <double *> sig_malloc(mm * sizeof(double))

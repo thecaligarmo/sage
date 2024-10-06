@@ -2493,7 +2493,7 @@ cdef class MPolynomial_libsingular(MPolynomial_libsingular_base):
         return char_to_str(s)
 
     def _latex_(self):
-        """
+        r"""
         Return a polynomial LaTeX representation of this polynomial.
 
         EXAMPLES::
