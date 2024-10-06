@@ -2100,7 +2100,7 @@ class BooleanMonomialMonoid(UniqueRepresentation, Monoid_class):
             sage: M(x_monom)
             x
 
-        Convert from other :class:`BooleanPolynomialRing`s ::
+        Convert from other :class:`BooleanPolynomialRing` s ::
 
             sage: R.<z,x> = BooleanPolynomialRing(2)
             sage: t = M(z); t
@@ -2108,8 +2108,8 @@ class BooleanMonomialMonoid(UniqueRepresentation, Monoid_class):
             sage: t.parent() is M
             True
 
-        Convert :class:`BooleanMonomial`s over other
-        :class:`BooleanPolynomialRing`s ::
+        Convert :class:`BooleanMonomial` s over other
+        :class:`BooleanPolynomialRing` s ::
 
             sage: N = BooleanMonomialMonoid(R)
             sage: t = M(N(x*z)); t
@@ -2117,7 +2117,7 @@ class BooleanMonomialMonoid(UniqueRepresentation, Monoid_class):
             sage: t.parent() is M
             True
 
-        Convert :class:`BooleSet`s ::
+        Convert :class:`BooleSet` s ::
 
             sage: t = M.an_element(); t
             x

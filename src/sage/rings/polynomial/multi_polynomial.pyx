@@ -313,7 +313,7 @@ cdef class MPolynomial(CommutativePolynomial):
         Multiple variables and iteration counts may be supplied; see
         documentation for the global function :func:`derivative` for more details.
 
-        .. SEEALSO:: :meth:`._derivative`
+        .. SEEALSO:: :meth:`MPolynomial_polydict._derivative`
 
         EXAMPLES:
 

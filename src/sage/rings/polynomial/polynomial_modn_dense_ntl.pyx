@@ -1096,7 +1096,7 @@ cdef class Polynomial_dense_modn_ntl_zz(Polynomial_dense_mod_n):
         this polynomial belongs, or ``None`` (either way the behaviour is the
         same).
 
-        .. SEEALSO:: :meth:`.derivative`
+        .. SEEALSO:: :meth:`Polynomial.derivative`
 
         EXAMPLES::
 
@@ -1665,7 +1665,7 @@ cdef class Polynomial_dense_modn_ntl_ZZ(Polynomial_dense_mod_n):
         this polynomial belongs, or None (either way the behaviour is the
         same).
 
-        .. SEEALSO:: :meth:`.derivative`
+        .. SEEALSO:: :meth:`Polynomial.derivative`
 
         EXAMPLES::
 

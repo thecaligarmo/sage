@@ -1470,7 +1470,7 @@ class MPolynomialIdeal_singular_repr(
 
         .. NOTE::
 
-            This method is called by the :meth:`.groebner_basis` method
+            This method is called by the :meth:`MPolynomialIdeal.groebner_basis` method
             and the user usually doesn't need to bother with this one.
         """
         from sage.rings.polynomial.multi_polynomial_sequence import \
